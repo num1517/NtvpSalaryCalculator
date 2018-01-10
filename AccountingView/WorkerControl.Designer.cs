@@ -191,11 +191,11 @@
             this.HourlyWorkerGroupBox.Controls.Add(this.HourPriceTextBox);
             this.HourlyWorkerGroupBox.Controls.Add(this.HoursWorkedLabel);
             this.HourlyWorkerGroupBox.Controls.Add(this.HoursWorkedTextBox);
-            this.HourlyWorkerGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.HourlyWorkerGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.HourlyWorkerGroupBox.Location = new System.Drawing.Point(3, 3);
             this.HourlyWorkerGroupBox.MinimumSize = new System.Drawing.Size(0, 70);
             this.HourlyWorkerGroupBox.Name = "HourlyWorkerGroupBox";
-            this.HourlyWorkerGroupBox.Size = new System.Drawing.Size(238, 248);
+            this.HourlyWorkerGroupBox.Size = new System.Drawing.Size(238, 100);
             this.HourlyWorkerGroupBox.TabIndex = 0;
             this.HourlyWorkerGroupBox.TabStop = false;
             this.HourlyWorkerGroupBox.Text = "Hourly Worker";
@@ -240,10 +240,10 @@
             this.MonthlyWorkerGroupBox.Controls.Add(this.BountyCheckBox);
             this.MonthlyWorkerGroupBox.Controls.Add(this.RateTextBox);
             this.MonthlyWorkerGroupBox.Controls.Add(this.RewardTextBox);
-            this.MonthlyWorkerGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MonthlyWorkerGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.MonthlyWorkerGroupBox.Location = new System.Drawing.Point(247, 3);
             this.MonthlyWorkerGroupBox.Name = "MonthlyWorkerGroupBox";
-            this.MonthlyWorkerGroupBox.Size = new System.Drawing.Size(239, 248);
+            this.MonthlyWorkerGroupBox.Size = new System.Drawing.Size(239, 100);
             this.MonthlyWorkerGroupBox.TabIndex = 0;
             this.MonthlyWorkerGroupBox.TabStop = false;
             this.MonthlyWorkerGroupBox.Text = "Monthly Worker";

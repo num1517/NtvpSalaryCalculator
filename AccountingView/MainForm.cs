@@ -188,6 +188,7 @@ namespace AccountingView
             if (selectedStaff != null)
             {
                 AddWorkerForm EditWorkerForm = new AddWorkerForm(selectedStaff);
+                EditWorkerForm.Text = "Edit worker";
                 EditWorkerForm.ShowDialog();
                 if (EditWorkerForm.newStaff != null)
                 {
