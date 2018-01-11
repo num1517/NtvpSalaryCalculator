@@ -90,7 +90,6 @@
             this.workerControl1.Location = new System.Drawing.Point(3, 3);
             this.workerControl1.MinimumSize = new System.Drawing.Size(458, 273);
             this.workerControl1.Name = "workerControl1";
-            this.workerControl1.NewWorker = null;
             this.workerControl1.Size = new System.Drawing.Size(489, 273);
             this.workerControl1.TabIndex = 0;
             // 
