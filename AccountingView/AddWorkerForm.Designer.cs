@@ -32,7 +32,7 @@
             this.CancelButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.salaryControl1 = new AccountingView.WorkerControl();
+            this.workerControl1 = new AccountingView.WorkerControl();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -62,14 +62,14 @@
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.salaryControl1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.workerControl1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(495, 243);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(495, 263);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // flowLayoutPanel1
@@ -77,27 +77,28 @@
             this.flowLayoutPanel1.Controls.Add(this.CancelButton);
             this.flowLayoutPanel1.Controls.Add(this.OKButton);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 209);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 226);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(489, 31);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(489, 34);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
-            // salaryControl1
+            // workerControl1
             // 
-            this.salaryControl1.AutoSize = true;
-            this.salaryControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.salaryControl1.Location = new System.Drawing.Point(3, 3);
-            this.salaryControl1.MinimumSize = new System.Drawing.Size(458, 273);
-            this.salaryControl1.Name = "salaryControl1";
-            this.salaryControl1.Size = new System.Drawing.Size(489, 273);
-            this.salaryControl1.TabIndex = 0;
+            this.workerControl1.AutoSize = true;
+            this.workerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.workerControl1.Location = new System.Drawing.Point(3, 3);
+            this.workerControl1.MinimumSize = new System.Drawing.Size(458, 273);
+            this.workerControl1.Name = "workerControl1";
+            this.workerControl1.NewWorker = null;
+            this.workerControl1.Size = new System.Drawing.Size(489, 273);
+            this.workerControl1.TabIndex = 0;
             // 
             // AddWorkerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(495, 243);
+            this.ClientSize = new System.Drawing.Size(495, 263);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "AddWorkerForm";
             this.Text = "Add worker";
@@ -110,7 +111,7 @@
 
         #endregion
 
-        private WorkerControl salaryControl1;
+        private WorkerControl workerControl1;
         private System.Windows.Forms.Button OKButton;
         private System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;

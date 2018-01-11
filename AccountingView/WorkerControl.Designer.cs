@@ -79,9 +79,9 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(495, 370);
             this.tableLayoutPanel1.TabIndex = 22;
             // 
@@ -95,7 +95,7 @@
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.MinimumSize = new System.Drawing.Size(0, 40);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(489, 49);
+            this.groupBox2.Size = new System.Drawing.Size(489, 68);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Worker";
@@ -103,7 +103,7 @@
             // FirstnameLabel
             // 
             this.FirstnameLabel.AutoSize = true;
-            this.FirstnameLabel.Location = new System.Drawing.Point(6, 21);
+            this.FirstnameLabel.Location = new System.Drawing.Point(9, 19);
             this.FirstnameLabel.Name = "FirstnameLabel";
             this.FirstnameLabel.Size = new System.Drawing.Size(52, 13);
             this.FirstnameLabel.TabIndex = 0;
@@ -112,7 +112,7 @@
             // SurnameLabel
             // 
             this.SurnameLabel.AutoSize = true;
-            this.SurnameLabel.Location = new System.Drawing.Point(188, 19);
+            this.SurnameLabel.Location = new System.Drawing.Point(208, 19);
             this.SurnameLabel.Name = "SurnameLabel";
             this.SurnameLabel.Size = new System.Drawing.Size(49, 13);
             this.SurnameLabel.TabIndex = 1;
@@ -120,14 +120,14 @@
             // 
             // FirstnameTextBox
             // 
-            this.FirstnameTextBox.Location = new System.Drawing.Point(64, 16);
+            this.FirstnameTextBox.Location = new System.Drawing.Point(71, 16);
             this.FirstnameTextBox.Name = "FirstnameTextBox";
             this.FirstnameTextBox.Size = new System.Drawing.Size(100, 20);
             this.FirstnameTextBox.TabIndex = 2;
             // 
             // SurnameTextBox
             // 
-            this.SurnameTextBox.Location = new System.Drawing.Point(243, 16);
+            this.SurnameTextBox.Location = new System.Drawing.Point(270, 16);
             this.SurnameTextBox.Name = "SurnameTextBox";
             this.SurnameTextBox.Size = new System.Drawing.Size(100, 20);
             this.SurnameTextBox.TabIndex = 3;
@@ -137,10 +137,10 @@
             this.groupBox1.Controls.Add(this.MonthlyWageRadioButton);
             this.groupBox1.Controls.Add(this.HourlySalaryRadioButton);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(3, 58);
+            this.groupBox1.Location = new System.Drawing.Point(3, 77);
             this.groupBox1.MinimumSize = new System.Drawing.Size(0, 40);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(489, 49);
+            this.groupBox1.Size = new System.Drawing.Size(489, 68);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Salary type";
@@ -177,12 +177,12 @@
             this.tableLayoutPanel2.Controls.Add(this.HourlyWorkerGroupBox, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.MonthlyWorkerGroupBox, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 113);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 151);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(489, 254);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(489, 216);
             this.tableLayoutPanel2.TabIndex = 23;
             // 
             // HourlyWorkerGroupBox
@@ -198,7 +198,7 @@
             this.HourlyWorkerGroupBox.Size = new System.Drawing.Size(238, 100);
             this.HourlyWorkerGroupBox.TabIndex = 0;
             this.HourlyWorkerGroupBox.TabStop = false;
-            this.HourlyWorkerGroupBox.Text = "Hourly Worker";
+            this.HourlyWorkerGroupBox.Text = "Hourly worker";
             // 
             // HourPriceLabel
             // 
@@ -211,7 +211,7 @@
             // 
             // HourPriceTextBox
             // 
-            this.HourPriceTextBox.Location = new System.Drawing.Point(91, 16);
+            this.HourPriceTextBox.Location = new System.Drawing.Point(118, 16);
             this.HourPriceTextBox.Name = "HourPriceTextBox";
             this.HourPriceTextBox.Size = new System.Drawing.Size(100, 20);
             this.HourPriceTextBox.TabIndex = 6;
@@ -227,7 +227,7 @@
             // 
             // HoursWorkedTextBox
             // 
-            this.HoursWorkedTextBox.Location = new System.Drawing.Point(91, 42);
+            this.HoursWorkedTextBox.Location = new System.Drawing.Point(118, 42);
             this.HoursWorkedTextBox.Name = "HoursWorkedTextBox";
             this.HoursWorkedTextBox.Size = new System.Drawing.Size(100, 20);
             this.HoursWorkedTextBox.TabIndex = 7;
@@ -246,7 +246,7 @@
             this.MonthlyWorkerGroupBox.Size = new System.Drawing.Size(239, 100);
             this.MonthlyWorkerGroupBox.TabIndex = 0;
             this.MonthlyWorkerGroupBox.TabStop = false;
-            this.MonthlyWorkerGroupBox.Text = "Monthly Worker";
+            this.MonthlyWorkerGroupBox.Text = "Monthly worker";
             // 
             // RewardLabel
             // 

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using Newtonsoft.Json;
 using System.IO;
 using AccountingModel.AccountingTypes;
+using AccountingModel.Utility;
 
 namespace AccountingView
 {
@@ -25,13 +25,13 @@ namespace AccountingView
         {
             AddWorkerForm addWorkerForm = new AddWorkerForm();
             addWorkerForm.ShowDialog();
-            if (addWorkerForm.newStaff != null)
+            if (addWorkerForm.newWorker != null)
             {
-                WorkerList.Add(addWorkerForm.newStaff);
+                WorkerList.Add(addWorkerForm.newWorker);
                 WorkersGridView.Rows.Add(
-                    addWorkerForm.newStaff.Firstname, 
-                    addWorkerForm.newStaff.Surname, 
-                    addWorkerForm.newStaff.GetSalaryValue());
+                    addWorkerForm.newWorker.Firstname, 
+                    addWorkerForm.newWorker.Surname, 
+                    addWorkerForm.newWorker.GetSalaryValue());
             }
         }
 
@@ -39,17 +39,17 @@ namespace AccountingView
         {
             try
             {
-                foreach (Worker staff in WorkerList)
+                foreach (Worker worker in WorkerList)
                 {
-                    if (staff.Firstname 
+                    if (worker.Firstname 
                         == WorkersGridView.CurrentRow.Cells[0].Value.ToString()
-                        && staff.Surname 
+                        && worker.Surname 
                         == WorkersGridView.CurrentRow.Cells[1].Value.ToString()
-                        && staff.GetSalaryValue().ToString() 
+                        && worker.GetSalaryValue().ToString() 
                         == WorkersGridView.CurrentRow.Cells[2].Value.ToString())
                     {
                         WorkersGridView.Rows.Remove(WorkersGridView.CurrentRow);
-                        WorkerList.Remove(staff);
+                        WorkerList.Remove(worker);
                         break;
                     }
                 }
@@ -77,23 +77,16 @@ namespace AccountingView
                     if ((fileStream = openWorkersFileDialog.OpenFile()) != null) 
                     { 
                         using (fileStream) 
-                        { 
-                            var settings = new JsonSerializerSettings 
-                            { 
-                                TypeNameHandling = TypeNameHandling.All 
-                            }; 
-                            StreamReader streamReader = new StreamReader(fileStream);
-                            WorkerList = 
-                                JsonConvert.DeserializeObject<List<Worker>>(
-                                    streamReader.ReadLine(), settings); 
-                            streamReader.Close(); 
+                        {
+                            Serializer serializer = new Serializer();
+                            WorkerList = serializer.Deserialize(fileStream);
                             fileStream.Close();
                             WorkersGridView.Rows.Clear();
-                            foreach (Worker staff in WorkerList) 
+                            foreach (Worker worker in WorkerList) 
                             {
-                                WorkersGridView.Rows.Add(staff.Firstname, 
-                                    staff.Surname, staff.GetSalaryValue());
-                            } 
+                                WorkersGridView.Rows.Add(worker.Firstname, 
+                                    worker.Surname, worker.GetSalaryValue());
+                            }
                         } 
                     } 
                 } 
@@ -107,12 +100,6 @@ namespace AccountingView
 
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var settings = new JsonSerializerSettings
-            {
-                TypeNameHandling = TypeNameHandling.All
-            }; 
-            string workersSerializedToString = 
-                JsonConvert.SerializeObject(WorkerList, settings);
             Stream fileStream;
             SaveFileDialog saveWorkersFileDialog = new SaveFileDialog();
 
@@ -124,10 +111,9 @@ namespace AccountingView
             {
                 if ((fileStream = saveWorkersFileDialog.OpenFile()) != null)
                 {
-                    StreamWriter streamWriter = new StreamWriter(fileStream);
-                    streamWriter.WriteLine(workersSerializedToString);
-                    streamWriter.Flush();
-                    streamWriter.Close();
+                    
+                    Serializer serializer = new Serializer();
+                    serializer.Serialize(WorkerList, fileStream);
                     fileStream.Close();
                 }
             }
@@ -136,25 +122,25 @@ namespace AccountingView
         private void AddRandomWorker_Click(object sender, EventArgs e)
         {
             Random random = new Random();
-            string name = "Имя" + random.Next(1, 100);
-            string surname = "Фамилия" + random.Next(1, 100);
-            Worker staff;
+            string name = "Firstname" + random.Next(1, 100);
+            string surname = "Surname" + random.Next(1, 100);
+            Worker worker;
 
             if (random.Next(0, 2) == 1)
             {
-                staff = new HourlyWorker(name, surname, 
-                    random.Next(1, 300), random.Next(80, 200));
+                worker = new HourlyWorker(name, surname, 
+                    random.Next(30, 1000), random.Next(80, 200));
             }
             else
             {
-                staff = new MonthlyWorker(name, surname, 
+                worker = new MonthlyWorker(name, surname, 
                     random.Next(10000,100000),
                     random.Next(10, 200)*0.01,
                     random.Next(0,5000));
             }
-            WorkerList.Add(staff);
-            WorkersGridView.Rows.Add(staff.Firstname, staff.Surname, 
-                staff.GetSalaryValue());
+            WorkerList.Add(worker);
+            WorkersGridView.Rows.Add(worker.Firstname, worker.Surname, 
+                worker.GetSalaryValue());
         }
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -164,19 +150,19 @@ namespace AccountingView
 
         private void EditButton_Click(object sender, EventArgs e)
         {
-            Worker selectedStaff = null;
+            Worker selectedWorker = null;
             try
             {
-                foreach (Worker staff in WorkerList)
+                foreach (Worker worker in WorkerList)
                 {
-                    if (staff.Firstname 
+                    if (worker.Firstname 
                         == WorkersGridView.CurrentRow.Cells[0].Value.ToString()
-                        && staff.Surname 
+                        && worker.Surname 
                         == WorkersGridView.CurrentRow.Cells[1].Value.ToString()
-                        && staff.GetSalaryValue().ToString() 
+                        && worker.GetSalaryValue().ToString() 
                         == WorkersGridView.CurrentRow.Cells[2].Value.ToString())
                     {
-                        selectedStaff = staff;
+                        selectedWorker = worker;
                         break;
                     }
                 }
@@ -185,18 +171,18 @@ namespace AccountingView
             {
                 MessageBox.Show("Wrong");
             }
-            if (selectedStaff != null)
+            if (selectedWorker != null)
             {
-                AddWorkerForm EditWorkerForm = new AddWorkerForm(selectedStaff);
+                AddWorkerForm EditWorkerForm = new AddWorkerForm(selectedWorker);
                 EditWorkerForm.Text = "Edit worker";
                 EditWorkerForm.ShowDialog();
-                if (EditWorkerForm.newStaff != null)
+                if (EditWorkerForm.newWorker != null)
                 {
-                    WorkerList.Remove(selectedStaff);
-                    WorkerList.Add(EditWorkerForm.newStaff);
-                    WorkersGridView.CurrentRow.SetValues(EditWorkerForm.newStaff.Firstname, 
-                        EditWorkerForm.newStaff.Surname, 
-                        EditWorkerForm.newStaff.GetSalaryValue());
+                    WorkerList.Remove(selectedWorker);
+                    WorkerList.Add(EditWorkerForm.newWorker);
+                    WorkersGridView.CurrentRow.SetValues(EditWorkerForm.newWorker.Firstname, 
+                        EditWorkerForm.newWorker.Surname, 
+                        EditWorkerForm.newWorker.GetSalaryValue());
                 }
             }
         }

@@ -6,7 +6,48 @@ namespace AccountingView
 {
     public partial class WorkerControl : UserControl
     {
-        public Worker newStaff = null;
+        private Worker newWorker = null;
+
+        public Worker NewWorker
+        {
+            get
+            {
+                try
+                {
+                    if (HourlySalaryRadioButton.Checked)
+                    {
+                        newWorker = new HourlyWorker(FirstnameTextBox.Text,
+                            SurnameTextBox.Text, Convert.ToDouble(HourPriceTextBox.Text),
+                            Convert.ToDouble(HoursWorkedTextBox.Text));
+                    }
+                    if (MonthlyWageRadioButton.Checked == true)
+                    {
+                        newWorker = new MonthlyWorker(FirstnameTextBox.Text,
+                            SurnameTextBox.Text, Convert.ToDouble(RewardTextBox.Text),
+                            Convert.ToDouble(RateTextBox.Text),
+                            Convert.ToDouble(BountyTextBox.Text));
+                    }
+                }
+                catch (FormatException ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                }
+                catch (ArgumentException ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                }
+                return newWorker;
+            }
+
+            set
+            {
+                newWorker = value;
+                FirstnameTextBox.Text = newWorker.Firstname;
+                SurnameTextBox.Text = newWorker.Surname;
+            }
+        }
 
         public WorkerControl()
         {
@@ -18,13 +59,6 @@ namespace AccountingView
             FirstnameTextBox.KeyPress += new KeyPressEventHandler(IsString);
             SurnameTextBox.KeyPress += new KeyPressEventHandler(IsString);
             HoursWorkedTextBox.KeyPress += new KeyPressEventHandler(IsNumber);
-        }
-
-        public void SetStaff(Worker staff)
-        {
-            newStaff = staff;
-            FirstnameTextBox.Text = staff.Firstname;
-            SurnameTextBox.Text = staff.Surname;
         }
 
         private void SalaryControl_Load(object sender, EventArgs e)
@@ -96,37 +130,6 @@ namespace AccountingView
                 BountyTextBox.Enabled = false;
                 BountyTextBox.Text = "0";
             }
-        }
-
-        public Worker GetSalary()
-        {
-            try
-            {
-                if (HourlySalaryRadioButton.Checked)
-                {
-                    newStaff = new HourlyWorker(FirstnameTextBox.Text,
-                        SurnameTextBox.Text, Convert.ToDouble(HourPriceTextBox.Text),
-                        Convert.ToDouble(HoursWorkedTextBox.Text));
-                }
-                if (MonthlyWageRadioButton.Checked == true)
-                {
-                    newStaff = new MonthlyWorker(FirstnameTextBox.Text,
-                        SurnameTextBox.Text, Convert.ToDouble(RewardTextBox.Text), 
-                        Convert.ToDouble(RateTextBox.Text),
-                        Convert.ToDouble(BountyTextBox.Text));
-                }
-            }
-            catch (FormatException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, 
-                    MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
-            }
-            catch (ArgumentException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, 
-                    MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
-            }
-            return newStaff;
         }
     }
 }

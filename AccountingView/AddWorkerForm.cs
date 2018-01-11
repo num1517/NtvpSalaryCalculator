@@ -6,23 +6,23 @@ namespace AccountingView
 {
     public partial class AddWorkerForm : Form
     {
-        public Worker newStaff = null;
+        public Worker newWorker = null;
 
         public AddWorkerForm()
         {
             InitializeComponent();
         }
 
-        public AddWorkerForm(Worker staff)
+        public AddWorkerForm(Worker worker)
         {
             InitializeComponent();
-            salaryControl1.SetStaff(staff);
+            workerControl1.NewWorker = worker;
         }
 
         private void OKButton_Click(object sender, EventArgs e)
         {
-            newStaff = salaryControl1.GetSalary();
-            if (newStaff != null)
+            newWorker = workerControl1.NewWorker;
+            if (newWorker != null)
             {
                 Close();
             }

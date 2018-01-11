@@ -14,22 +14,6 @@ namespace AccountingModel.AccountingTypes
         }
 
         /// <summary>
-        /// Конструктор, принимающий имя и фамилию
-        /// </summary>
-        /// <param name="firstname"></param>
-        /// <param name="surname"></param>
-        public MonthlyWorker(string firstname, string surname)
-        {
-            if (!(Validator.ValidateString(firstname) 
-                && Validator.ValidateString(surname)))
-            {
-                throw new ArgumentException();
-            }
-            Firstname = firstname;
-            Surname = surname;
-        }
-
-        /// <summary>
         /// Конструктор, принимающий имя, фамилию, оклад, ставку и премию
         /// </summary>
         /// <param name="firstname"></param>
@@ -40,12 +24,6 @@ namespace AccountingModel.AccountingTypes
         public MonthlyWorker(string firstname, string surname, 
             double reward, double rate, double bounty)
         {
-            if (!(Validator.ValidateString(firstname) 
-                && Validator.ValidateString(surname)))
-            {
-                throw new ArgumentException();
-            }
-            
             Firstname = firstname;
             Surname = surname;
             Reward = reward;
@@ -109,7 +87,7 @@ namespace AccountingModel.AccountingTypes
             get { return _bounty; }
             set 
             {
-                if (!(Utility.Validator.ValidateNumber(value) 
+                if (!(Validator.ValidateNumber(value) 
                     && (value >= 0) && (value <= 50000)))
                 {
                     throw new ArgumentException("Invalid bounty");
@@ -125,16 +103,6 @@ namespace AccountingModel.AccountingTypes
         public override double GetSalaryValue()
         {
             return ((_reward * _rate) + _bounty);
-        }
-        /// <summary>
-        /// Преобразование объекта в строку
-        /// </summary>
-        /// <returns></returns>
-        public override string ToString()
-        {
-            return Firstname + " " + Surname + " monthly reward is " 
-                + _reward + ". Employee works on " + _rate + " rate. With bounty " 
-                + _bounty + ". Mounth emp salary is " + GetSalaryValue() + ".";
         }
     }
 }
