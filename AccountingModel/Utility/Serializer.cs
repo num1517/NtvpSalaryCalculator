@@ -7,11 +7,11 @@ namespace AccountingModel.Utility
 {
     public class Serializer
     {
-        JsonSerializerSettings settings;
+        private JsonSerializerSettings _settings;
 
         public Serializer()
         {
-            settings = new JsonSerializerSettings
+            _settings = new JsonSerializerSettings
             {
                 TypeNameHandling = TypeNameHandling.All
             };
@@ -20,7 +20,7 @@ namespace AccountingModel.Utility
         public void Serialize(List <Worker> workers, Stream fileStream)
         {
             string workersSerializedToString =
-                JsonConvert.SerializeObject(workers, settings);
+                JsonConvert.SerializeObject(workers, _settings);
             StreamWriter streamWriter = new StreamWriter(fileStream);
             streamWriter.WriteLine(workersSerializedToString);
             streamWriter.Flush();
@@ -33,7 +33,7 @@ namespace AccountingModel.Utility
             StreamReader streamReader = new StreamReader(fileStream);
             WorkerList = 
                 JsonConvert.DeserializeObject<List<Worker>>(
-                    streamReader.ReadLine(), settings);
+                    streamReader.ReadLine(), _settings);
             streamReader.Close();
             return WorkerList;
         }

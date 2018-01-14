@@ -6,7 +6,7 @@ namespace AccountingView
 {
     public partial class WorkerControl : UserControl
     {
-        private Worker newWorker = null;
+        private Worker _newWorker = null;
 
         public Worker NewWorker
         {
@@ -16,13 +16,13 @@ namespace AccountingView
                 {
                     if (HourlySalaryRadioButton.Checked)
                     {
-                        newWorker = new HourlyWorker(FirstnameTextBox.Text,
+                        _newWorker = new HourlyWorker(FirstnameTextBox.Text,
                             SurnameTextBox.Text, Convert.ToDouble(HourPriceTextBox.Text),
                             Convert.ToDouble(HoursWorkedTextBox.Text));
                     }
                     if (MonthlyWageRadioButton.Checked == true)
                     {
-                        newWorker = new MonthlyWorker(FirstnameTextBox.Text,
+                        _newWorker = new MonthlyWorker(FirstnameTextBox.Text,
                             SurnameTextBox.Text, Convert.ToDouble(RewardTextBox.Text),
                             Convert.ToDouble(RateTextBox.Text),
                             Convert.ToDouble(BountyTextBox.Text));
@@ -38,14 +38,14 @@ namespace AccountingView
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK,
                         MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                 }
-                return newWorker;
+                return _newWorker;
             }
 
             set
             {
-                newWorker = value;
-                FirstnameTextBox.Text = newWorker.Firstname;
-                SurnameTextBox.Text = newWorker.Surname;
+                _newWorker = value;
+                FirstnameTextBox.Text = _newWorker.Firstname;
+                SurnameTextBox.Text = _newWorker.Surname;
             }
         }
 

@@ -5,8 +5,8 @@
     /// </summary>
     public abstract class Worker
     {
-        private string _firstName;
-        private string _surName;
+        private string _firstname;
+        private string _surname;
 
         /// <summary>
         /// Имя
@@ -15,7 +15,7 @@
         {
             get
             {
-                return _firstName;
+                return _firstname;
             }
 
             set
@@ -24,7 +24,7 @@
                 {
                     throw new System.ApplicationException("Wrong firstname");
                 }
-                _firstName = value;
+                _firstname = value;
             }
         }
 
@@ -35,7 +35,7 @@
         {
             get
             {
-                return _surName;
+                return _surname;
             }
 
             set
@@ -44,7 +44,7 @@
                 {
                     throw new System.ApplicationException("Wrong surname");
                 }
-                _surName = value;
+                _surname = value;
             }
         }
 
